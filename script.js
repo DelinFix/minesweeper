@@ -8,6 +8,8 @@
     CLICKED_MINE: 'clicked_mine'
 }
 
+let clocktimer
+
 const firstCountNum = document.querySelector('[data-count="first"]')
 const secondCountNum = document.querySelector('[data-count="second"]')
 const thirdCountNum = document.querySelector('[data-count="third"]')
@@ -33,21 +35,23 @@ function updateMinesCount(activeMines) {
 
 function updateTimer() {
     let timer = 0;
-    clocktimer = setInterval(() => {
-        timer++
-        if(timer % 10 === 0) {
-            firstTimer.style.backgroundPosition = "-126px 0px"
-        }
-        if(Math.floor(timer / 10) === 0) {
-            secondTimer.style.backgroundPosition = "-126px 0px"
-        }
-        if (Math.floor(timer / 100) === 0) {
-            thirdTimer.style.backgroundPosition = "-126px 0px"
-        }
-        firstTimer.style.backgroundPosition = `-${(timer % 10) * 14 - 14}px 0px`
-        secondTimer.style.backgroundPosition = `-${Math.floor(timer / 10) * 14 - 14}px 0px`
-        thirdTimer.style.backgroundPosition = `-${Math.floor(timer / 100) * 14 - 14}px 0px`
-    }, 1000)
+    if(!clocktimer) {
+        clocktimer = setInterval(() => {
+            timer+=1
+            if(timer % 10 === 0) {
+                firstTimer.style.backgroundPosition = "-126px 0px"
+            }
+            if(Math.floor(timer / 10) === 0) {
+                secondTimer.style.backgroundPosition = "-126px 0px"
+            }
+            if (Math.floor(timer / 100) === 0) {
+                thirdTimer.style.backgroundPosition = "-126px 0px"
+            }
+            firstTimer.style.backgroundPosition = `-${(timer % 10) * 14 - 14}px 0px`
+            secondTimer.style.backgroundPosition = `-${Math.floor(timer / 10) * 14 - 14}px 0px`
+            thirdTimer.style.backgroundPosition = `-${Math.floor(timer / 100) * 14 - 14}px 0px`
+        }, 1000)
+    }
 }
 
 function createBoard(size, minesNum) {
@@ -135,7 +139,7 @@ function revealTile(board, tile) {
     }
 
     tile.status = TILE_STATUSES.NUMBER
-    const adjacentTiles = nearbtTiles(board, tile)
+    const adjacentTiles = nearbyTiles(board, tile)
     const mines = adjacentTiles.filter(t => t.mine)
     if(mines.length === 0) {
         adjacentTiles.forEach(revealTile.bind(null, board))
@@ -144,7 +148,7 @@ function revealTile(board, tile) {
     }
 }
 
-function nearbtTiles(board, {x,y}) {
+function nearbyTiles(board, {x,y}) {
     const tiles = []
 
     for(let xOffset = -1; xOffset <= 1; xOffset ++) {
@@ -166,6 +170,7 @@ function checkGameEnd() {
         boardElem.addEventListener('contextmenu', stopProp, {capture: true})
         boardElem.addEventListener('mousedown', stopProp, {capture: true})
         boardElem.addEventListener('mouseup', stopProp, {capture: true})
+        window.clearInterval(clocktimer)
     }
     
     if(win) {
@@ -238,6 +243,7 @@ function fillBoard() {
             tile.element.addEventListener('click', () => {
                 revealTile(board, tile)
                 checkGameEnd()
+                updateTimer()
             })
             tile.element.addEventListener('mousedown', () => {
                 resetElem.style.backgroundPosition = "-54px -24px"
