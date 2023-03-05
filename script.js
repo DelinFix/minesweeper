@@ -29,15 +29,18 @@ function updateMinesCount(activeMines) {
         thirdCountNum.style.backgroundPosition = "-126px 0px"
     }
     firstCountNum.style.backgroundPosition = `-${(activeMines % 10) * 14 - 14}px 0px`
-    secondCountNum.style.backgroundPosition = `-${Math.floor(activeMines / 10) * 14 - 14}px 0px`
+    secondCountNum.style.backgroundPosition = `-${Math.floor(activeMines / 10 % 10) * 14 - 14}px 0px`
     thirdCountNum.style.backgroundPosition = `-${Math.floor(activeMines / 100) * 14 - 14}px 0px`
 }
 
 function updateTimer() {
-    let timer = 0;
+    let timer = 1;
     if(!clocktimer) {
         clocktimer = setInterval(() => {
             timer+=1
+            if(timer > 999) {
+                return
+            }
             if(timer % 10 === 0) {
                 firstTimer.style.backgroundPosition = "-126px 0px"
             }
@@ -48,7 +51,7 @@ function updateTimer() {
                 thirdTimer.style.backgroundPosition = "-126px 0px"
             }
             firstTimer.style.backgroundPosition = `-${(timer % 10) * 14 - 14}px 0px`
-            secondTimer.style.backgroundPosition = `-${Math.floor(timer / 10) * 14 - 14}px 0px`
+            secondTimer.style.backgroundPosition = `-${Math.floor(timer / 10 % 10) * 14 - 14}px 0px`
             thirdTimer.style.backgroundPosition = `-${Math.floor(timer / 100) * 14 - 14}px 0px`
         }, 1000)
     }
