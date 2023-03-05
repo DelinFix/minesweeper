@@ -183,10 +183,8 @@ function checkGameEnd() {
         resetElem.style.backgroundPosition = "-108px -24px"
         board.forEach(row => {
             row.forEach(tile => {
-                // if(tile.status === TILE_STATUSES.MARKED) markTile(tile)
                 if(tile.mine && tile.status !== TILE_STATUSES.CLICKED_MINE) {
                     tile.status = TILE_STATUSES.MINE
-                    // revealTile(board, tile)
                 }
             })
         })
@@ -217,13 +215,13 @@ function checkLose(board) {
 }
 
 const BOARD_SIZE = 16
-const NUM_OF_MINES = 15
+const NUM_OF_MINES = 40
 
 let board
 const boardElem = document.querySelector('.board')
 const resetElem = document.querySelector('.reset')
 
-resetElem.addEventListener('click', () => {
+function resetBoard() {
     resetElem.style.backgroundPosition = "-27px -24px"
     board = createBoard(BOARD_SIZE, NUM_OF_MINES)
     boardElem.innerHTML = ''
@@ -240,7 +238,9 @@ resetElem.addEventListener('click', () => {
     setTimeout(() => {
         resetElem.style.backgroundPosition = "0px -24px"
     }, 100)
-})
+}
+
+resetElem.addEventListener('click', resetBoard)
 
 boardElem.style.setProperty('--size', BOARD_SIZE)
 
@@ -249,6 +249,11 @@ function fillBoard() {
         row.forEach(tile => {
             boardElem.append(tile.element)
             tile.element.addEventListener('click', () => {
+                if(board.every(row => {
+                    return row.every(tile => tile.status === TILE_STATUSES.HIDDEN)
+                }) && tile.mine) {
+                    resetBoard()
+                }
                 revealTile(board, tile)
                 checkGameEnd()
                 updateTimer()
