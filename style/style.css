@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    flex-direction: column;
+    color: white;
+}
+
+.frame {
+    border: ridge 4px lightgray;
+}
+
+.header {
+    background-color: silver;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0px;
+}
+
+.mine-count {
+    margin-left: 10px;
+    display: flex;
+}
+
+.mine-count .first-num, .mine-count .second-num, .mine-count .third-num {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -126px 0px;
+    width: 13px;
+    height: 23px;
+}
+
+.reset {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: 0px -24px;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+}
+
+.timer {
+    margin-right: 10px;
+    display: flex;
+}
+
+.timer .first-num, .timer .second-num, .timer .third-num {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -126px 0px;
+    width: 13px;
+    height: 23px;
+}
+
+.board {
+    display: inline-grid;
+    padding: 10px;
+    grid-template-columns: repeat(var(--size), 17px);
+    grid-template-rows: repeat(var(--size), 17px);
+    background-color: #777;
+}
+
+.board > * {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 0px solid #BBB;
+    user-select: none;
+}
+
+.board > [data-status="hidden"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: 0px -51px;
+    cursor: pointer;
+}
+
+.board > [data-status="mine"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -85px -51px;
+}
+
+.board > [data-status="number"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -17px -51px;
+}
+
+.board > [data-status="marked"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -34px -51px;
+}
+
+.board > [data-status="question"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -51px -51px;
+}
+
+.board > [data-status="clicked_mine"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -102px -51px;
+}
+
+.board > [data-number="1"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: 0px -68px;
+}
+.board > [data-number="2"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -17px -68px;
+}
+.board > [data-number="3"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -34px -68px;
+}
+.board > [data-number="4"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -51px -68px;
+}
+.board > [data-number="5"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -68px -68px;
+}
+.board > [data-number="6"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -85px -68px;
+}
+.board > [data-number="7"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -102px -68px;
+}
+.board > [data-number="8"] {
+    background: url(./assets/minesweeper.png) no-repeat;
+    background-position: -119px -68px;
+}
+
