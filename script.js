@@ -34,7 +34,7 @@ function updateMinesCount(activeMines) {
 }
 
 function updateTimer() {
-    let timer = 1;
+    let timer = 0;
     if(!clocktimer) {
         clocktimer = setInterval(() => {
             timer+=1
@@ -232,6 +232,11 @@ resetElem.addEventListener('click', () => {
     boardElem.removeEventListener('contextmenu', stopProp, {capture: true})
     boardElem.removeEventListener('mousedown', stopProp, {capture: true})
     boardElem.removeEventListener('mouseup', stopProp, {capture: true})
+    window.clearInterval(clocktimer)
+    clocktimer = 0
+    firstTimer.style.backgroundPosition = "-126px 0px"
+    secondTimer.style.backgroundPosition = "-126px 0px"
+    thirdTimer.style.backgroundPosition = "-126px 0px"
     setTimeout(() => {
         resetElem.style.backgroundPosition = "0px -24px"
     }, 100)
