@@ -30,14 +30,14 @@ body {
 }
 
 .mine-count .first-num, .mine-count .second-num, .mine-count .third-num {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -126px 0px;
     width: 13px;
     height: 23px;
 }
 
 .reset {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: 0px -24px;
     width: 27px;
     height: 27px;
@@ -50,7 +50,7 @@ body {
 }
 
 .timer .first-num, .timer .second-num, .timer .third-num {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -126px 0px;
     width: 13px;
     height: 23px;
@@ -76,66 +76,66 @@ body {
 }
 
 .board > [data-status="hidden"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: 0px -51px;
     cursor: pointer;
 }
 
 .board > [data-status="mine"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -85px -51px;
 }
 
 .board > [data-status="number"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -17px -51px;
 }
 
 .board > [data-status="marked"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -34px -51px;
 }
 
 .board > [data-status="question"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -51px -51px;
 }
 
 .board > [data-status="clicked_mine"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -102px -51px;
 }
 
 .board > [data-number="1"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: 0px -68px;
 }
 .board > [data-number="2"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -17px -68px;
 }
 .board > [data-number="3"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -34px -68px;
 }
 .board > [data-number="4"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -51px -68px;
 }
 .board > [data-number="5"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -68px -68px;
 }
 .board > [data-number="6"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -85px -68px;
 }
 .board > [data-number="7"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -102px -68px;
 }
 .board > [data-number="8"] {
-    background: url(./assets/minesweeper.png) no-repeat;
+    background: url(../assets/minesweeper.png) no-repeat;
     background-position: -119px -68px;
 }
 
